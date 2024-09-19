@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+    <record id="ext_purchase_header" model="ir.ui.view">
+        <field name="name">ext.purchase.heder</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+    <xpath expr="//field[@name='date_order']" position="before">
+                <field name='purchase_serial'/>
+            </xpath>    
+            </field>
+    </record>
+
+    <record id="purchase_quotation_form_inherit" model="ir.ui.view">
+    <field name="name">purchase.order.form.inherit</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//form[@class='o_purchase_order']/header/button[@name='button_cancel']" position="before">
+            <button type="object"
+            name="action_create_sales_quotation" 
+            string="Sell Directly" 
+            class="oe_highlight"  >
+            
+            </button>
+        </xpath>
+    </field>
+</record>
+
+<record id="extension_orderline_tree_purchase" model="ir.ui.view">
+        <field name="name">extension.orderline.tree.purchase</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='activity_ids']" position="after">
+                <field name="purchase_serial" />
+                
+            </xpath>
+        </field>
+    </record>
+
+    <record id="extension_orderline_tree_search_purchase" model="ir.ui.view">
+        <field name="name">extension.orderline.tree.search.purchase</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="purchase_serial" />
+                
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
