@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  
+    <record id="ext_sale_header" model="ir.ui.view">
+        <field name="name">ext.sale.heder</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//group[@name='sale_header']/group[@name='order_details']/field[@name='validity_date']" position='before'>
+                <field name='serial'/>
+            </xpath>    
+            </field>
+    </record>
+
+<!-- <record id="extension_orderline_tree" model="ir.ui.view">
+        <field name="name">extension.orderline.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='line_ids']" position="after">
+                <field name="ext_serial" />
+                
+            </xpath>
+        </field>
+    </record> -->
+
+    <record id="extension_orderline_tree_search" model="ir.ui.view">
+        <field name="name">extension.orderline.tree.search</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='activity_ids']" position="after">
+                <field name="ext_serial" />
+                
+            </xpath>
+        </field>
+    </record>
+
+
+
+    <record id="extension_orderline_tree_sales" model="ir.ui.view">
+        <field name="name">extension.orderline.tree.sales</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='activity_ids']" position="after">
+                <field name="serial" />
+                
+            </xpath>
+        </field>
+    </record>
+
+    <record id="extension_orderline_tree_search_sales" model="ir.ui.view">
+        <field name="name">extension.orderline.tree.search.sales</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="serial" />
+                
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
