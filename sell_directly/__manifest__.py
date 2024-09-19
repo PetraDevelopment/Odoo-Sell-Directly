@@ -18,6 +18,7 @@
     'images': ['static/description/banner.png'],
         'price':15,
       'currency':'USD',  
+      'license':'AGPL-3'
          
         
     }
